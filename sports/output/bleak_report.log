@@ -1,0 +1,143 @@
+# LeakRoots Ranked By LeakShare
+## LeakRoot Ranked 1 [Score: 17456]
+
+### GC Paths
+
+* document.childNodes[1].childNodes[1].childNodes[1].childNodes
+
+### Stack Traces Responsible
+
+
+        [0] presentSport http://localhost:7878/sports/sports.js:27:7
+        [1] selectSport http://localhost:7878/sports/sports.js:41:15
+        [2] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [3] Object.next http://localhost:7878/sports/index.html:24:39
+        [4] undefined undefined:1:21
+
+
+## LeakRoot Ranked 2 [Score: 7816]
+
+### GC Paths
+
+* List of 'click' listeners on window.prev
+
+### Stack Traces Responsible
+
+
+        [0] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:49:9
+        [1] Object.next http://localhost:7878/sports/index.html:24:39
+        [2] undefined undefined:1:21
+
+
+## LeakRoot Ranked 3 [Score: 392]
+
+### GC Paths
+
+* window.sportVisitHistory
+
+### Stack Traces Responsible
+
+
+        [0] selectSport http://localhost:7878/sports/sports.js:38:22
+        [1] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [2] Object.next http://localhost:7878/sports/index.html:24:39
+        [3] undefined undefined:1:21
+
+
+
+
+# LeakRoots Ranked By Retained Size
+## LeakRoot Ranked 1 [Score: 17456]
+
+### GC Paths
+
+* document.childNodes[1].childNodes[1].childNodes[1].childNodes
+
+### Stack Traces Responsible
+
+
+        [0] presentSport http://localhost:7878/sports/sports.js:27:7
+        [1] selectSport http://localhost:7878/sports/sports.js:41:15
+        [2] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [3] Object.next http://localhost:7878/sports/index.html:24:39
+        [4] undefined undefined:1:21
+
+
+## LeakRoot Ranked 2 [Score: 7816]
+
+### GC Paths
+
+* List of 'click' listeners on window.prev
+
+### Stack Traces Responsible
+
+
+        [0] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:49:9
+        [1] Object.next http://localhost:7878/sports/index.html:24:39
+        [2] undefined undefined:1:21
+
+
+## LeakRoot Ranked 3 [Score: 392]
+
+### GC Paths
+
+* window.sportVisitHistory
+
+### Stack Traces Responsible
+
+
+        [0] selectSport http://localhost:7878/sports/sports.js:38:22
+        [1] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [2] Object.next http://localhost:7878/sports/index.html:24:39
+        [3] undefined undefined:1:21
+
+
+
+
+# LeakRoots Ranked By Transitive Closure Size
+## LeakRoot Ranked 1 [Score: 280248]
+
+### GC Paths
+
+* document.childNodes[1].childNodes[1].childNodes[1].childNodes
+
+### Stack Traces Responsible
+
+
+        [0] presentSport http://localhost:7878/sports/sports.js:27:7
+        [1] selectSport http://localhost:7878/sports/sports.js:41:15
+        [2] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [3] Object.next http://localhost:7878/sports/index.html:24:39
+        [4] undefined undefined:1:21
+
+
+## LeakRoot Ranked 2 [Score: 27200]
+
+### GC Paths
+
+* List of 'click' listeners on window.prev
+
+### Stack Traces Responsible
+
+
+        [0] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:49:9
+        [1] Object.next http://localhost:7878/sports/index.html:24:39
+        [2] undefined undefined:1:21
+
+
+## LeakRoot Ranked 3 [Score: 19776]
+
+### GC Paths
+
+* window.sportVisitHistory
+
+### Stack Traces Responsible
+
+
+        [0] selectSport http://localhost:7878/sports/sports.js:38:22
+        [1] HTMLButtonElement.nextSport http://localhost:7878/sports/sports.js:57:14
+        [2] Object.next http://localhost:7878/sports/index.html:24:39
+        [3] undefined undefined:1:21
+
+
+
