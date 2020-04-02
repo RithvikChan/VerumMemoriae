@@ -1,0 +1,6 @@
+[{
+  "id": "bleakhighlighter",
+  "caption": "BLeak Memory Leak Detector",
+  "command": "bleak_highlighter"
+}
+]
