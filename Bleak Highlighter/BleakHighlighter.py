@@ -1,9 +1,39 @@
 import sublime, sublime_plugin, re, os, subprocess, json
 from . import mosspy
 
-def checkDuplicacy():
+def checkWithin(startEnd, lineno):
+	for i in startEnd:
+		if(lineno> int(i[0])-1 and lineno< int(i[1])):
+			return True
+	return False
+def checkWithinAndFound(startEnd, lineno, line, issueContent):
+	for i in issueContent:
+		findpos = line.find(i)
+		if (findpos!=-1 and checkWithin(startEnd, lineno)):
+			return True,findpos
+	return False,findpos
+
+def checkDuplicacy(issues, startEnd, fileName):
 	print("CHECK")
-def mossrun(filesToCheck, fileName):
+	r = []
+	issueContent = []
+	for i in range(len(issues)):
+		fil = open("/home/rithvikchan/Desktop/moss/sports/"+issues[i][0])
+		contents = fil.readlines()
+		issueContent.append( contents[issues[i][1][0]-1][issues[i][1][1]:issues[i][1][1]+5])
+	print("ISSUE CONTENT:", issueContent)
+	pluginFile = fileName
+	line_number = 0
+	list_of_results = []
+	with open(pluginFile, 'r') as read_obj:
+		for line in read_obj:
+			line_number += 1
+			checkCondition = checkWithinAndFound(startEnd, line_number, line, issueContent)
+			if checkCondition[0]:
+				r.append((line_number,checkCondition[1]))
+	return r
+                
+def mossrun(filesToCheck, fileName, issues):
 	userid = 507632796
 	#Add all other files
 	print("FILES TO CHECK", filesToCheck)
@@ -24,7 +54,7 @@ def mossrun(filesToCheck, fileName):
 		for i in range(1,len(x),2):
 			startEnd.append(x[i][1].split("-"))
 		print(startEnd)
-		checkDuplicacy()
+		return checkDuplicacy(issues, startEnd, fileName)
 		print("NO MATCHES!! Good to go")
 class BleakHighlighter(sublime_plugin.TextCommand):
 
@@ -50,12 +80,15 @@ class BleakHighlighter(sublime_plugin.TextCommand):
 			items = list(item)
 			if(items[0] and file == items[0].split("/")[-1]):
 				run = True
-				issues.append((items[0].split("/")[-1], (items[1], items[2])))
 				r.append(sublime.Region(view.text_point(items[1]-1, 0)+items[2], view.text_point(items[1]-1, 0)+ items[2]+5))
 			if(items[0] and items[0].split("/")[-1].split(".")[-1]=="js"):
+				issues.append((items[0].split("/")[-1], (items[1], items[2])))
 				filesChecked.append(directory+items[0].split("/")[-1])
 		print("ISSUES : ", issues)
 		if(run==False):
-			mossrun(list(set(filesChecked)), self.view.window().active_view().file_name(), issues)
+			regions = mossrun(list(set(filesChecked)), self.view.window().active_view().file_name(), issues)
+			print("REGIONS",regions)
+			for lineMatch in regions:
+				r.append(sublime.Region(view.text_point(lineMatch[0]-1, 0) + lineMatch[1], view.text_point(lineMatch[0]-1, 0)+ lineMatch[1] + 5))	
 		self.view.add_regions("inset", r, "comment")
 
